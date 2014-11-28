@@ -41,4 +41,8 @@
   (setq-local inferior-lisp-program pixie-inf-lisp-command))
 
 ;;;###autoload
-(add-to-list 'auto-mode-alist '("\\.\\pxi\\'" . pixie-mode))
+(add-to-list 'auto-mode-alist '("\\.pxi\\'" . pixie-mode))
+
+(provide 'pixie-mode)
+;;; pixie-mode.el ends here
+
