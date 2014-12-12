@@ -5,7 +5,7 @@
 ;; Author: John Walker <john.lou.walker@gmail.com>
 ;; URL: https://github.com/johnwalker/pixie-mode
 ;; Version: 0.1.0
-;; Package-Requires: ((clojure-mode "3.0.1"))
+;; Package-Requires: ((clojure-mode "3.0.1") (inf-clojure "1.0.0"))
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -38,11 +38,13 @@
 (define-derived-mode pixie-mode clojure-mode "Pixie"
   "Major mode for editing Pixie code.
 \\{pixie-mode-map}"
-  (setq-local inferior-lisp-program pixie-inf-lisp-command))
+  (define-key pixie-mode-map "\C-x\C-e" 'inf-clojure-eval-last-sexp)
+  (setq-local inferior-lisp-program pixie-inf-lisp-command)
+  (setq-local inf-clojure-load-command "(load-file \"%s\")")
+  (setq-local inf-clojure-program "pixie-vm"))
 
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.pxi\\'" . pixie-mode))
 
 (provide 'pixie-mode)
 ;;; pixie-mode.el ends here
-
