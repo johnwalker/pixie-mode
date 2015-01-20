@@ -28,6 +28,9 @@
 
 ;;; Code:
 
+(require 'clojure-mode)
+(require 'inf-clojure)
+
 (defcustom pixie-inf-lisp-command "pixie-vm"
   "The command used by `inferior-lisp-program'."
   :type 'string
