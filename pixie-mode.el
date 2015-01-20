@@ -38,10 +38,11 @@
 (define-derived-mode pixie-mode clojure-mode "Pixie"
   "Major mode for editing Pixie code.
 \\{pixie-mode-map}"
-  (define-key pixie-mode-map "\C-x\C-e" 'inf-clojure-eval-last-sexp)
-  (setq-local inferior-lisp-program pixie-inf-lisp-command)
-  (setq-local inf-clojure-load-command "(load-file \"%s\")")
-  (setq-local inf-clojure-program "pixie-vm"))
+  (set (make-local-variable 'inferior-lisp-program) pixie-inf-lisp-command)
+  (set (make-local-variable 'inf-clojure-load-command) "(load-file \"%s\")")
+  (set (make-local-variable 'inf-clojure-program) "pixie-vm"))
+
+(define-key pixie-mode-map "\C-x\C-e" 'inf-clojure-eval-last-sexp)
 
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.pxi\\'" . pixie-mode))
