@@ -20,6 +20,7 @@ inf-clojure.
 
 ## License
    Copyright © 2015 John Walker and [contributors][]. Licensed under GPLv3.
-   
+
+[badge-license]: https://img.shields.io/badge/license-GPL_3-green.svg
 [contributors]: https://github.com/clojure-emacs/clojure-mode/contributors
 [COPYING]: http://www.gnu.org/copyleft/gpl.html
