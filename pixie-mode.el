@@ -31,8 +31,14 @@
 (require 'clojure-mode)
 (require 'inf-clojure)
 
-(defcustom pixie-inf-lisp-command "pixie-vm"
-  "The command used by `inferior-lisp-program'."
+(defcustom pixie-inf-lisp-program "pixie-vm"
+  "The program used to start an inferior pixie in Inferior Clojure mode."
+  :type 'string
+  :group 'pixie
+  :safe 'stringp)
+
+(defcustom pixie-inf-lisp-load-command "(load-file \"%s\")"
+  "The format string for building an expression that loads a pixie file."
   :type 'string
   :group 'pixie
   :safe 'stringp)
@@ -41,9 +47,8 @@
 (define-derived-mode pixie-mode clojure-mode "Pixie"
   "Major mode for editing Pixie code.
 \\{pixie-mode-map}"
-  (set (make-local-variable 'inferior-lisp-program) pixie-inf-lisp-command)
-  (set (make-local-variable 'inf-clojure-load-command) "(load-file \"%s\")")
-  (set (make-local-variable 'inf-clojure-program) "pixie-vm"))
+  (set (make-local-variable 'inf-clojure-load-command) pixie-inf-lisp-load-command)
+  (set (make-local-variable 'inf-clojure-program) pixie-inf-lisp-program))
 
 (define-key pixie-mode-map "\C-x\C-e" 'inf-clojure-eval-last-sexp)
 
