@@ -31,6 +31,10 @@
 (require 'clojure-mode)
 (require 'inf-clojure)
 
+(unless (fboundp 'setq-local)
+  (defmacro setq-local (var val)
+    `(set (make-local-variable ',var) ,val)))
+
 (defcustom pixie-inf-lisp-program "pixie-vm"
   "The program used to start an inferior pixie in Inferior Clojure mode."
   :type 'string
@@ -43,14 +47,21 @@
   :group 'pixie
   :safe 'stringp)
 
+;; I'm not of aware of a way to share variables over small groups of
+;; buffers, especially ones that aren't in pixie-mode. Is there a
+;; better approach than defadvice with a let?
+(defadvice inf-clojure-show-var-documentation (around advice-pixie activate)
+  (if (derived-mode-p 'pixie-mode)
+      (let ((inf-clojure-var-doc-command "(pixie.stdlib/doc %s)\n"))
+	ad-do-it)
+    ad-do-it))
+
 ;;;###autoload
 (define-derived-mode pixie-mode clojure-mode "Pixie"
   "Major mode for editing Pixie code.
 \\{pixie-mode-map}"
-  (set (make-local-variable 'inf-clojure-load-command) pixie-inf-lisp-load-command)
-  (set (make-local-variable 'inf-clojure-program) pixie-inf-lisp-program))
-
-(define-key pixie-mode-map "\C-x\C-e" 'inf-clojure-eval-last-sexp)
+  (setq-local inf-clojure-load-command pixie-inf-lisp-load-command)
+  (setq-local inf-clojure-program pixie-inf-lisp-program))
 
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.pxi\\'" . pixie-mode))

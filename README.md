@@ -41,12 +41,12 @@ Keyboard Shortcut    | Command
 <kbd>C-c C-p</kbd>   | inf-clojure-eval-paragraph
 <kbd>C-c C-z</kbd>   | inf-clojure-switch-to-repl
 <kbd>C-c C-l</kbd>   | inf-clojure-load-file
+<kbd>C-c C-v</kbd>   | inf-clojure-show-var-documentation
 <!--
 <kbd>C-c C-i</kbd>   | inf-clojure-show-ns-vars
 <kbd>C-c C-A</kbd>   | inf-clojure-apropos
 <kbd>C-c C-m</kbd>   | inf-clojure-macroexpand
 <kbd>C-c C-a</kbd>   | inf-clojure-show-arglist
-<kbd>C-c C-v</kbd>   | inf-clojure-show-var-documentation
 <kbd>C-c C-s</kbd>   | inf-clojure-show-var-source
 <kbd>C-c M-n</kbd>   | inf-clojure-set-ns
 -->
