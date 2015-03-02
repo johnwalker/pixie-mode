@@ -11,14 +11,12 @@ Available via MELPA through `package.el`. Install with:
 
 <kbd>M-x package-install [RET] pixie-mode [RET]</kbd>
 
-If you want to interact with the REPL, add this line to your emacs
-configuration:
+If you want to interact with the REPL, then ensure that pixie-vm is 
+on your path and add this line to your emacs configuration:
 
 ```el
 (add-hook 'pixie-mode-hook #'inf-clojure-minor-mode)
 ```
-
-and ensure that pixie-vm is available on your path.
 
 ## Usage
 ### Launching a REPL
