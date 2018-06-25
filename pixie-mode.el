@@ -61,7 +61,9 @@
   "Major mode for editing Pixie code.
 \\{pixie-mode-map}"
   (setq-local inf-clojure-load-command pixie-inf-lisp-load-command)
-  (setq-local inf-clojure-program pixie-inf-lisp-program))
+  ;; obsolete:
+  ;; (setq-local inf-clojure-program pixie-inf-lisp-program)
+  (setq-local inf-clojure-generic-cmd pixie-inf-lisp-program))
 
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.pxi\\'" . pixie-mode))
